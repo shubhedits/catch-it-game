@@ -5,8 +5,8 @@
   <title>Catch The Lund 😭</title>
   <style>
     body {
-      background-color: white;
-      color: #F9B8F9;
+      background-color: black;
+      color: white;
       font-family: sans-serif;
       text-align: center;
       overflow: hidden;
@@ -22,13 +22,7 @@
       font-size: 2.5em;
       cursor: pointer;
       user-select: none;
-    }
-
-    .big-three {
-      position: absolute;
-      font-size: 5em;
-      color: red;
-      display: none;
+      transition: transform 0.2s linear;
     }
   </style>
 </head>
@@ -36,33 +30,23 @@
 
   <h1>CATCH THE LUND! 🤣</h1>
   <div class="lund" id="lund">8===D</div>
-  <div class="big-three" id="bigThree">3</div>
 
   <script>
     let lund = document.getElementById("lund");
-    let bigThree = document.getElementById("bigThree");
     let gameOver = false;
 
     function moveLund() {
       if (gameOver) return;
       let x = Math.random() * (window.innerWidth - 50);
       let y = Math.random() * (window.innerHeight - 50);
-      lund.style.left = `${x}px`;
-      lund.style.top = `${y}px`;
+      lund.style.transform = `translate(${x}px, ${y}px)`;
     }
 
     lund.addEventListener("mouseover", moveLund);
 
-    setInterval(moveLund, 300); // Moves super fast
-
     setTimeout(() => {
       gameOver = true;
-      lund.style.display = "none";
-      let cornerX = Math.random() > 0.5 ? "10px" : "calc(100% - 80px)";
-      let cornerY = Math.random() > 0.5 ? "10px" : "calc(100% - 80px)";
-      bigThree.style.left = cornerX;
-      bigThree.style.top = cornerY;
-      bigThree.style.display = "block";
+      window.location.href = "lose.html";
     }, 15000);
   </script>
 
