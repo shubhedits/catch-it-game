@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Maa Chud Gayi Teri 🤣</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3em;
+    }
+
+    .retry {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 2.5em;
+      animation: floatDown 1.5s linear infinite;
+    }
+
+    @keyframes floatDown {
+      from { transform: translateY(-50px) scale(1); opacity: 1; }
+      to { transform: translateY(100px) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Maa Chud Gayi Teri 🤣🤣🤣</h1>
+  <button class="retry" onclick="restartGame()">Retry</button>
+
+  <script>
+    function restartGame() {
+      window.location.href = "index.html";
+    }
+
+    function createLaughEmoji() {
+      const emoji = document.createElement("div");
+      emoji.classList.add("emoji");
+      emoji.innerHTML = "🤣";
+      emoji.style.left = `${Math.random() * window.innerWidth}px`;
+      emoji.style.top = `-50px`;
+      emoji.style.position = "absolute";
+      emoji.style.animationDuration = `${Math.random() * 2 + 1}s`;
+      document.body.appendChild(emoji);
+      setTimeout(() => emoji.remove(), 2000);
+    }
+
+    setInterval(createLaughEmoji, 200);
+  </script>
+
+</body>
+</html>
