@@ -22,7 +22,12 @@
       font-size: 2.5em;
       cursor: pointer;
       user-select: none;
-      transition: transform 0.2s linear;
+      transition: transform 0.1s linear;
+    }
+
+    .message {
+      font-size: 3em;
+      display: none;
     }
   </style>
 </head>
@@ -30,24 +35,24 @@
 
   <h1>CATCH THE LUND! 🤣</h1>
   <div class="lund" id="lund">8===D</div>
+  <div class="message" id="message">YOU SAVED YOUR MOM! 😭</div>
 
   <script>
     let lund = document.getElementById("lund");
-    let gameOver = false;
+    let message = document.getElementById("message");
 
     function moveLund() {
-      if (gameOver) return;
       let x = Math.random() * (window.innerWidth - 50);
       let y = Math.random() * (window.innerHeight - 50);
       lund.style.transform = `translate(${x}px, ${y}px)`;
     }
 
-    lund.addEventListener("mouseover", moveLund);
+    setInterval(moveLund, 200); // Moves fast every 0.2 seconds
 
-    setTimeout(() => {
-      gameOver = true;
-      window.location.href = "lose.html";
-    }, 15000);
+    lund.addEventListener("click", () => {
+      lund.style.display = "none";
+      message.style.display = "block";
+    });
   </script>
 
 </body>
